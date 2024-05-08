@@ -1,6 +1,11 @@
 <?php
 
-class Bank
+interface Money 
+{
+    public function getMoney();
+}
+
+class Bank implements Money
 {
     private $name;
     public $address;
