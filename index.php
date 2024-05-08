@@ -9,7 +9,7 @@ class Bank implements Money
 {
     private $name;
     public $address;
-    public $balance;
+    public $balance = 10;
     
     public function setTax()
     {
@@ -47,9 +47,20 @@ class InternationalBank extends Bank
     }
 }
 
+class OperationService
+{
+    public function retrieveInvestments(Money $institution)
+    {
+        return $institution->getMoney();
+    }
+}
+
 $bankNational = new NationalBank;
 $bankNational->balance = 100;
 $bankInternational = new InternationalBank;
 $bankInternational->balance = 100;
 
 echo $bankInternational->getMoney() . " |" . $bankNational->getMoney();
+
+$operationService = new OperationService;
+echo "\n investiments {$operationService->retrieveInvestments(new Bank)}";
