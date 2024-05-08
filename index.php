@@ -4,6 +4,7 @@ class Bank
 {
     private $name;
     public $address;
+    public $balance;
     
     public function setTax()
     {
@@ -17,17 +18,33 @@ class Bank
     {
         return $this->name;
     }
+
+    public function getMoney()
+    {
+        return $this->balance;
+    }
 }
 
 class NationalBank extends Bank
-{}
+{
+    public function getMoney()
+    {
+        return "R$ " . $this->balance;
+    }
+}
 
-$bankOne = new Bank;
 
-$bankOne->setName("Santander");
-$bankOne->address = "Jose Bonifacio 201";
-echo $bankOne->getName();
+class InternationalBank extends Bank
+{
+    public function getMoney()
+    {
+        return "USD " . $this->balance;
+    }
+}
 
 $bankNational = new NationalBank;
-$bankNational->setName("XP");
-echo $bankNational->getName();
+$bankNational->balance = 100;
+$bankInternational = new InternationalBank;
+$bankInternational->balance = 100;
+
+echo $bankInternational->getMoney() . " |" . $bankNational->getMoney();
