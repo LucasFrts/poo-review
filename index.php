@@ -19,8 +19,15 @@ class Bank
     }
 }
 
+class NationalBank extends Bank
+{}
+
 $bankOne = new Bank;
 
 $bankOne->setName("Santander");
 $bankOne->address = "Jose Bonifacio 201";
 echo $bankOne->getName();
+
+$bankNational = new NationalBank;
+$bankNational->setName("XP");
+echo $bankNational->getName();
